@@ -11,9 +11,9 @@ flag VARCHAR(255)
 
 CREATE TABLE Events (
 id SERIAL4 primary key,
-gold_id INT4,
-silver_id INT4,
-bronze_id INT4,
+gold_athlete_id INT4,
+silver_athlete_id INT4,
+bronze_athlete_id INT4,
 name VARCHAR(255)
 );
 

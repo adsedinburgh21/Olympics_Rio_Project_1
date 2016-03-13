@@ -1,5 +1,6 @@
-require_relative( './athlete.rb' )
+require_relative( './nation.rb' )
 require_relative( './event.rb' )
+require_relative( '../db/sql_db.rb' )
 
 class Athlete
 
@@ -19,13 +20,13 @@ class Athlete
   end
 
   def nation
-    sql = "SELECT * FROM nations WHERE id = @nation_id"
+    sql = "SELECT * FROM nations WHERE id = #{@nation_id}"
     nation = SqlDB.run( sql )
     return Nation.new( nation[0] )
   end
 
   def event
-    sql = "SELECT * FROM events WHERE id = @event_id"
+    sql = "SELECT * FROM events WHERE id = #{@event_id}"
     event = SqlDB.run( sql )
     return Event.new( event[0] )
   end

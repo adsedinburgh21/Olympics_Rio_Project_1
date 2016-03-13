@@ -1,5 +1,6 @@
 require_relative( '../db/sql_db.rb' )
 
+
 class Nation
 
   attr_reader :id, :name, :flag
