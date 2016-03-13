@@ -46,27 +46,29 @@ class Event
   # end
   # # #### This is me trying to refactor the gold/silver/bronze_medalist - worry about that later.
 
-  def win_gold?( nation_id )
-    if nation_id == gold_medalist.nation.id
+  def win_gold?( nation )
+    if nation == gold_medalist.nation
+      return true
+    end
+  end
+  ##### Could probably get rid of .id part? eg pass in nation object, then if nation = gold_medalist.nation - need to remove .id part from olympic-total_golds etc too. I HAVE CHANGED THIS NOW AND TAKEN OUT THE .ID'S.
+
+
+  def win_silver?( nation )
+    if nation == silver_medalist.nation
       return true
     end
   end
 
-  def win_silver?( nation_id )
-    if nation_id == silver_medalist.nation.id
-      return true
-    end
-  end
-
-  def win_bronze?( nation_id )
-    if nation_id == bronze_medalist.nation.id
+  def win_bronze?( nation )
+    if nation == bronze_medalist.nation
       return true
     end
   end
 
 #### Could use 'athlete_win_gold?' below in same way as the versions above where pass nation_id, so then could find out if athlete won gold, then in olympic could make method to count number of golds for an athlete. (although at the moment it can only be 1 because of one to many relationship between athlete and event - athlete can only be in 1 event)
-  def athlete_win_gold?( athlete_id )
-    if athlete_id == gold_medalist.id
+  def athlete_win_gold?( athlete )
+    if athlete == gold_medalist
       return true
     end
   end

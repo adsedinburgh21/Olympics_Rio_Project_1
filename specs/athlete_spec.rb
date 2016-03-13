@@ -12,7 +12,7 @@ class TestAthlete < MiniTest::Test
     @nation1 = Nation.new( { 'name' => 'United Kingdom', 'id' => 1 } )
     @nation2 = Nation.new( { 'name' => 'Jamaica', 'id' => 2 } )
     @nation3 = Nation.new( { 'name' => 'Canada', 'id' => 3 } )
-    @nations = [ @nation1, @nation2]
+    @nations = [ @nation1, @nation2, @nation3]
 
 
     @athlete1 = Athlete.new( {
@@ -57,21 +57,22 @@ class TestAthlete < MiniTest::Test
     @event1 = Event.new( {
       'id' => 1,
       'name' => '100m',
-      'gold_id' => @athlete1.id,
-      'silver_id' => @athlete2.id,
-      'bronze_id' => @athlete3.id
+      'gold_athlete_id' => @athlete1.id,
+      'silver_athlete_id' => @athlete2.id,
+      'bronze_athlete_id' => @athlete3.id
       } )
     @event2 = Event.new( {
       'id' => 2,
       'name' => 'Pole Vault',
-      'gold_id' => @athlete4.id,
-      'silver_id' => @athlete5.id,
-      'bronze_id' => @athlete6.id
+      'gold_athlete_id' => @athlete4.id,
+      'silver_athlete_id' => @athlete5.id,
+      'bronze_athlete_id' => @athlete6.id
       } )
     @events = [ @event1, @event2]
 
 
     #### PROBABLY DONT NEED ALL OF THIS INFO IN ATHLETE SPECS   #####
+    #### !!! POSSIBLY DONT EVEN NEED AN ATHLETE SPEC FILE !!! #####
 
 
   end
