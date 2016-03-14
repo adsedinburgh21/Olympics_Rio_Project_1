@@ -27,7 +27,12 @@ class Athlete
                #{options['nation_id']}, 
                #{options['event_id']} )"
     SqlDB.run( sql )
-    return Athlete.new( options )
+    return Athlete.new( Athlete.last_entry )
+  end
+
+  def self.last_entry
+    sql = "SELECT * FROM athletes ORDER BY id DESC limit 1;"
+    return SqlDB.run( sql ).first()
   end
 
   def nation
