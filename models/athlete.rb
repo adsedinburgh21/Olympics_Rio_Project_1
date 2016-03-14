@@ -1,6 +1,7 @@
 require_relative( './nation.rb' )
 require_relative( './event.rb' )
 require_relative( '../db/sql_db.rb' )
+require( 'pg' )
 
 class Athlete
 
@@ -9,14 +10,24 @@ class Athlete
   def initialize( options )
     @id = options[ 'id' ]
     @name = options[ 'name' ]
-    @nation_id = options[ 'nation_id' ]
-    @event_id = options[ 'event_id' ]
+    @nation_id = options[ 'nation_id' ].to_i
+    @event_id = options[ 'event_id' ].to_i
   end
 
   def self.all
     sql = "SELECT * FROM athletes"
     athletes = SqlDB.run( sql )
     return athletes.map {|athlete| Athlete.new(athlete)}
+  end
+
+  def self.create( options )
+    sql = "INSERT INTO athletes (
+      name, nation_id, event_id) 
+      VALUES ('#{options['name']}', 
+               #{options['nation_id']}, 
+               #{options['event_id']} )"
+    SqlDB.run( sql )
+    return Athlete.new( options )
   end
 
   def nation
@@ -34,6 +45,7 @@ class Athlete
   def compete_in?( event_id )
     return true if event == event_id 
   end
+  ##### Do i need this? Not yet- mbe later.
 
 
 end

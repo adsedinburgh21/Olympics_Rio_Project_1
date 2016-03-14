@@ -1,4 +1,5 @@
 require_relative( '../db/sql_db.rb' )
+require( 'pg' )
 
 
 class Nation
@@ -17,6 +18,20 @@ class Nation
     return nations.map {|nation| Nation.new(nation)}
   end
 
+  def self.create( options )
+    sql = "INSERT INTO nations (
+      name,
+      flag) VALUES (
+      '#{options['name']}',
+      '#{options['flag']}' )"
+    SqlDB.run( sql )
+    return Nation.new( Nation.last_entry )
+  end
+
+  def self.last_entry
+    sql = "SELECT * FROM nations ORDER BY id DESC limit 1;"
+    return SqlDB.run( sql ).first()
+  end
 
 
 

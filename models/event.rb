@@ -1,6 +1,7 @@
 require_relative( './athlete.rb' )
 require_relative( './nation.rb' )
 require_relative( '../db/sql_db.rb' )
+require( 'pg' )
 
 
 class Event
@@ -9,16 +10,35 @@ class Event
 
   def initialize( options )
     @id = options[ 'id' ]
+    @name = options[ 'name' ]
     @gold_athlete_id = options[ 'gold_athlete_id' ]
     @silver_athlete_id = options[ 'silver_athlete_id' ]
     @bronze_athlete_id = options[ 'bronze_athlete_id' ]
-    @name = options[ 'name' ]
   end
 
   def self.all
     sql = "SELECT * FROM events"
     events = SqlDB.run( sql )
     return events.map {|event| Event.new(event)}
+  end
+
+  def self.create( options )
+    sql = "INSERT INTO events (
+      name,
+      gold_athlete_id,
+      silver_athlete_id,
+      bronze_athlete_id) VALUES (
+      '#{options['name']}',
+      '#{options['gold_athlete_id']}',
+      '#{options['silver_athlete_id']}',
+      '#{options['bronze_athlete_id']}' )"
+    SqlDB.run( sql )
+    return Event.new( Event.last_entry )
+  end
+
+  def self.last_entry
+    sql = "SELECT * FROM events ORDER BY id DESC limit 1;"
+    return SqlDB.run( sql ).first()
   end
 
   def gold_medalist

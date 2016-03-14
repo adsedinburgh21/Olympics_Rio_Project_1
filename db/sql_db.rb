@@ -1,3 +1,5 @@
+require( 'pg' )
+
 class SqlDB
 
   def self.run( sql )
