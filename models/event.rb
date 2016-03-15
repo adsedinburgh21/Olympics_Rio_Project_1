@@ -71,18 +71,6 @@ class Event
     return true if nation_id == gold_medalist.nation.id
   end
 
-#### THIS METHOD ISNT WORKING!! SEE BELOW: The objects are different!!
-
-  # [1] pry(#<Event>)> nation
-  # => #<Nation:0x007fc7cb236988 @flag="http://images.nationmaster.com/images/flags/uk-lgflag.gif", @id="1", @name="United Kingdom">
-  # [2] pry(#<Event>)> gold_medalist.nation
-  # => #<Nation:0x007fc7cb3d75a8 @flag="http://images.nationmaster.com/images/flags/uk-lgflag.gif", @id="1", @name="United Kingdom">
-
-
-
-  ##### Could probably get rid of .id part? eg pass in nation object, then if nation = gold_medalist.nation - need to remove .id part from olympic-total_golds etc too. I HAVE CHANGED THIS NOW AND TAKEN OUT THE .ID'S.
-
-
   def win_silver?( nation_id )
     return true if nation_id == silver_medalist.nation.id
   end

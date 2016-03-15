@@ -21,7 +21,7 @@ require( 'pg' )
 
 @event1 = Event.create( {
   'name' => '100m',
-  'gold_athlete_id' => 1,
+  'gold_athlete_id' => 5,
   'silver_athlete_id' => 2,
   'bronze_athlete_id' => 3
   } )
@@ -29,7 +29,7 @@ require( 'pg' )
   'name' => 'Pole Vault',
   'gold_athlete_id' => 4,
   'silver_athlete_id' => 6,
-  'bronze_athlete_id' => 5
+  'bronze_athlete_id' => 1
   } )
 
 
