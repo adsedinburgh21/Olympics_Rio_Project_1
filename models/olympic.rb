@@ -1,4 +1,9 @@
+require( 'pry-byebug' )
+
+
 class Olympic
+
+  attr_reader :nations, :athletes, :events
 
   def initialize( options )
     @nations = options['nations']
@@ -6,21 +11,20 @@ class Olympic
     @events = options['events']
   end
 
-  def total_gold( nation )
-    total = @events.select {|event| event.win_gold?( nation )}
+  def total_gold( nation_id )
+    total = @events.select {|event| event.win_gold?( nation_id )}
     return total.length
   end
 
-  def total_silver( nation )
-    total = @events.select {|event| event.win_silver?( nation )}
+  def total_silver( nation_id )
+    total = @events.map {|event| event.win_silver?( nation_id )}
     return total.length
   end
 
-  def total_bronze( nation )
-    total = @events.select {|event| event.win_bronze?( nation )}
+  def total_bronze( nation_id )
+    total = @events.select {|event| event.win_bronze?( nation_id )}
     return total.length
   end
-
 
 
   # def athlete_total_gold( athlete_id )

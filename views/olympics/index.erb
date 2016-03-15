@@ -1,0 +1,27 @@
+<table>
+<caption>Rio 2016 Olympic Games - Nation Medal Table</caption>
+  <thead>
+    <tr>
+      <th>Nation</th>
+      <th>Gold Medals</th>
+      <th>Silver Medals</th>
+      <th>Bronze Medals</th>
+      <th>Points</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @olympic.nations.each do |nation| %>
+    <tr>
+      <td><%= nation.name %></td>
+      <td><%= @olympic.total_gold( nation.id ) %></td>
+      <td><%= @olympic.total_silver( nation.id ) %></td>
+      <td><%= @olympic.total_bronze( nation.id ) %></td>
+      <!-- <td><%=  %></td> -->
+    </tr>
+
+
+
+    <% end %>
+  </tbody>
+
+</table>
