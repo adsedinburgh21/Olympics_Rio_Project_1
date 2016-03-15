@@ -10,7 +10,7 @@
     </tr>
   </thead>
   <tbody>
-    <% @olympic.hash_nations_points_two.each do |nation| %>
+    <% @olympic.order_nations_by_points_two.each do |nation| %>
     <tr>
       <td><%= nation[:name] %></td>
       <td><%= @olympic.total_gold( nation[:id] ) %></td>

@@ -79,6 +79,16 @@ class Event
     return true if nation_id == bronze_medalist.nation.id
   end
 
+
+  def gold_nation
+    athlete = gold_medalist
+    return athlete.nation.name
+  end
+
+
+
+
+
 #### Could use 'athlete_win_gold?' below in same way as the versions above where pass nation_id, so then could find out if athlete won gold, then in olympic could make method to count number of golds for an athlete. (although at the moment it can only be 1 because of one to many relationship between athlete and event - athlete can only be in 1 event)
   def athlete_win_gold?( athlete )
     if athlete.id == gold_medalist.id

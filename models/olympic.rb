@@ -37,7 +37,7 @@ class Olympic
   # end
 
 
-  # def hash_nations_points
+  # def order_nations_by_points
   #   points = { }
   #   @nations.each do |nation|
   #     points[nation] = total_points( nation.id )
@@ -48,10 +48,9 @@ class Olympic
   #   return @array
   # end
 
-  def hash_nations_points_two
-    points = []
-    @nations.each do |nation|
-      points.push( { id: nation.id, name: nation.name, points: total_points(nation.id) } )
+  def order_nations_by_points_two
+    points = @nations.map do |nation|
+      {id: nation.id, name: nation.name, points: total_points(nation.id)}
     end
     ordered = points.sort_by { |nation| nation[:points] }
     return ordered.reverse
