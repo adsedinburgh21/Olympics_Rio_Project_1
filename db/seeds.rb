@@ -36,7 +36,7 @@ require( 'pg' )
 athlete1 = Athlete.create( {
   "name" => "Adam Reid",
   'nation_id' => @nation1.id,
-  'event_id' => @event1.id
+  'event_id' => @event2.id
   } )
 athlete2 = Athlete.create( {
   'name' => 'Usain Bolt',
@@ -56,7 +56,7 @@ athlete4 = Athlete.create( {
 athlete5 = Athlete.create( {
   'name' => 'George Pierre',
   'nation_id' => @nation3.id,
-  'event_id' => @event2.id
+  'event_id' => @event1.id
   } )
 athlete6 = Athlete.create( {
   'name' => 'Bob Marley',

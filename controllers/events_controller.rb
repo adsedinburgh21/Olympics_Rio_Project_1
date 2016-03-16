@@ -5,7 +5,6 @@ require_relative( '../models/athlete.rb' )
 
 get '/events' do
   @events = Event.all
-  @athletes = Athlete.all
   erb( :"events/index")
 end
 

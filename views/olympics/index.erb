@@ -1,8 +1,9 @@
 <table>
-<caption>Rio 2016 Olympic Games - Nation Medal Table</caption>
+<caption><h1>Rio 2016 Olympic Games - Nation Medal Table</h1></caption>
   <thead>
     <tr>
       <th>Nation</th>
+      <th>Flag</th>
       <th>Gold Medals</th>
       <th>Silver Medals</th>
       <th>Bronze Medals</th>
@@ -10,9 +11,10 @@
     </tr>
   </thead>
   <tbody>
-    <% @olympic.order_nations_by_points_two.each do |nation| %>
+    <% @olympic.order_nations_by_points.each do |nation| %>
     <tr>
-      <td><%= nation[:name] %><img src="<%= nation[:flag] %>"></td>
+      <td><a href="/nations/<%= nation[:id] %>"><%= nation[:name] %></td>
+      <td><a href="/nations/<%= nation[:id] %>"><img class="nation" src="<%= nation[:flag] %>"></a></td>
       <td><%= @olympic.total_gold( nation[:id] ) %></td>
       <td><%= @olympic.total_silver( nation[:id] ) %></td>
       <td><%= @olympic.total_bronze( nation[:id] ) %></td>

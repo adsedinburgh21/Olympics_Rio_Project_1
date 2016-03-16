@@ -1,8 +1,13 @@
+<h1>Nations</h1>
+
 <% @nations.each do |nation| %>
 
-<body style="background-image:'<%= nation.flag %>'">
-  <h4><%= nation.name %></h4>
-  <a href="/nations/<%= nation.id %>"><%= nation.name %>: View More Info</a>
+<body>
+
+    <h4><img class="nation" src="<%= nation.flag %>"> <%= nation.name %></h4>
+
+    <a href="/nations/<%= nation.id %>"><%= nation.name %>: View More Info</a>
+  
 </body>
 <hr>
 <% end %>

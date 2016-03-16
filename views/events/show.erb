@@ -1,11 +1,9 @@
-<p>The event show page</p>
-
-<h2><%= @event.name %></h2>
-
+<div class="content">
 <table>
-<caption><%= @event.name %>: Result</caption>
+<caption><h1><%= @event.name %>: Meadlists</h1></caption>
   <thead>
     <tr>
+      <th></th>
       <th>Medal</th>
       <th>Athlete</th>
       <th>Nation</th>
@@ -13,23 +11,28 @@
   </thead>
   <tbody>
     <tr>
-      <td>Gold Medal<img src="/img/gold_medal.png"></td>
-      <td><%= @event.gold_medalist.name %></td>
-      <td><%= @event.gold_medalist.nation.name %><img src="<%= @event.gold_medalist.nation.flag %>"></td>
+      <td><img class="nation" src="/img/gold_medal.png"></td>
+      <td>Gold Medal</td>
+      <td><a href="/athletes/<%= @event.gold_medalist.id %>"><%= @event.gold_medalist.name %></a></td>
+      <td><a href="/nations/<%= @event.gold_medalist.nation.id %>"><img class="nation" src="<%= @event.gold_medalist.nation.flag %>"><br><%= @event.gold_medalist.nation.name %></a></td>
     </tr>
 
     <tr>
-      <td>Silver Medal<img src="/img/silver_medal.png"></td>
-      <td><%= @event.silver_medalist.name %></td>
-      <td><%= @event.silver_medalist.nation.name %><img src="<%= @event.silver_medalist.nation.flag %>"></td>
+      <td><img class="nation" src="/img/silver_medal.png"></td>
+      <td>Silver Medal</td>
+      <td><a href="/athletes/<%= @event.silver_medalist.id %>"><%= @event.silver_medalist.name %></a></td>
+      <td><a href="/nations/<%= @event.silver_medalist.nation.id %>"><img class="nation" src="<%= @event.silver_medalist.nation.flag %>"><br><%= @event.silver_medalist.nation.name %></a></td>
     </tr>
 
     <tr>
-      <td>Bronze Medal<img src="/img/bronze_medal.png"></td>
-      <td><%= @event.bronze_medalist.name %></td>
-      <td><%= @event.bronze_medalist.nation.name %><img src="<%= @event.bronze_medalist.nation.flag %>"></td>
+      <td><img class="nation" src="/img/bronze_medal.png"></td>
+      <td>Bronze Medal</td>
+      <td><a href="/athletes/<%= @event.bronze_medalist.id %>"><%= @event.bronze_medalist.name %></a></td>
+      <td><a href="/nations/<%= @event.bronze_medalist.nation.id %>"><img class="nation" src="<%= @event.bronze_medalist.nation.flag %>"><br><%= @event.bronze_medalist.nation.name %></a></td>
     </tr>
 
   </tbody>
 
 </table>
+
+</div>

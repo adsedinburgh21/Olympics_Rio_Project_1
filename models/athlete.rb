@@ -5,7 +5,7 @@ require( 'pg' )
 
 class Athlete
 
-  attr_reader :id, :name, :nation_id
+  attr_reader :id, :name, :nation_id, :event_id
 
   def initialize( options )
     @id = options[ 'id' ]
@@ -54,7 +54,7 @@ class Athlete
   end
 
   def compete_in?( event_id )
-    return true if event == event_id 
+    return true if event.id == event_id 
   end
   ##### Do i need this? Not yet- mbe later.
 

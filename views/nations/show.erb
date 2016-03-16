@@ -1,5 +1,7 @@
+<h1>Athletes of <%=@nation.name%>  <img class="nation" src="<%= @nation.flag %>"></h1>
+
 <% @nation.athletes.each do |athlete| %>
 
-<h2><a href="/athletes/<%= athlete.id %> "><%= athlete.name %></a></h2>
+<h4><a href="/athletes/<%= athlete.id %> "><%= athlete.name %></a></h4>
 
 <% end %>
