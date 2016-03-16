@@ -50,7 +50,7 @@ class Olympic
 
   def order_nations_by_points_two
     points = @nations.map do |nation|
-      {id: nation.id, name: nation.name, points: total_points(nation.id)}
+      {id: nation.id, name: nation.name, points: total_points(nation.id), flag: nation.flag}
     end
     ordered = points.sort_by { |nation| nation[:points] }
     return ordered.reverse

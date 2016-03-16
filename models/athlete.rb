@@ -32,7 +32,13 @@ class Athlete
 
   def self.last_entry
     sql = "SELECT * FROM athletes ORDER BY id DESC limit 1;"
-    return SqlDB.run( sql ).first()
+    return SqlDB.run( sql ).first
+  end
+
+  def self.find(id)
+    sql = "SELECT * FROM athletes WHERE id = #{id}"
+    result = SqlDB.run( sql )
+    Athlete.new( result[0] )
   end
 
   def nation

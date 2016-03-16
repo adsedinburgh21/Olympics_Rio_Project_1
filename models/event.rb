@@ -38,7 +38,13 @@ class Event
 
   def self.last_entry
     sql = "SELECT * FROM events ORDER BY id DESC limit 1;"
-    return SqlDB.run( sql ).first()
+    return SqlDB.run( sql ).first
+  end
+
+  def self.find(id)
+    sql = "SELECT * FROM events WHERE id = #{id}"
+    result = SqlDB.run( sql )
+    Event.new( result[0] )
   end
 
 

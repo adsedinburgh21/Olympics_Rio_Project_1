@@ -30,7 +30,13 @@ class Nation
 
   def self.last_entry
     sql = "SELECT * FROM nations ORDER BY id DESC limit 1;"
-    return SqlDB.run( sql ).first()
+    return SqlDB.run( sql ).first
+  end
+
+  def self.find(id)
+    sql = "SELECT * FROM nations WHERE id = #{id}"
+    result = SqlDB.run( sql )
+    Nation.new( result[0] )
   end
 
 
