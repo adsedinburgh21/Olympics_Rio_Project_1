@@ -1,5 +1,6 @@
-<h1><%= @athlete.name %></h1>
+<div class="content">
+  <h1><%= @athlete.name %>    <img class="nation" src="<%= @athlete.nation.flag %>"></h1>
 
-<h4><a href="/nations/<%= @athlete.nation.id %>">Nation: <%= @athlete.nation.name %></a></h4>
-<h4><a href="/events/<%= @athlete.event_id %>">Event: <%= @athlete.event.name %></a></h4>
-
+  <h4><a href="/nations/<%= @athlete.nation.id %>">Nation: <%= @athlete.nation.name %></a></h4>
+  <h4><a href="/events/<%= @athlete.event_id %>">Event: <%= @athlete.event.name %></a></h4>
+</div>

@@ -1,9 +1,11 @@
-<h1>Events</h1>
+<div class="content">
+  <h1>Events</h1>
 
-<% @events.each do |event| %>
+  <% @events.each do |event| %>
 
-<h4><%= event.name %></h4>
+  <h2><%= event.name %></h2>
 
-<a href="/events/<%= event.id %>"><%= event.name %>: View Results</a>
-<hr>
-<% end %>
+  <a href="/events/<%= event.id %>"><%= event.name %>: View Results</a>
+  <hr>
+  <% end %>
+</div>

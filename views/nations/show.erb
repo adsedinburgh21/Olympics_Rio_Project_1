@@ -1,7 +1,9 @@
-<h1>Athletes of <%=@nation.name%>  <img class="nation" src="<%= @nation.flag %>"></h1>
+<div class="content">
+  <h1>Athletes of <%=@nation.name%>  <img class="nation" src="<%= @nation.flag %>"></h1>
 
-<% @nation.athletes.each do |athlete| %>
+  <% @nation.athletes.each do |athlete| %>
 
-<h4><a href="/athletes/<%= athlete.id %> "><%= athlete.name %></a></h4>
+  <h4><a href="/athletes/<%= athlete.id %> "><%= athlete.name %></a></h4>
 
-<% end %>
+  <% end %>
+</div>
