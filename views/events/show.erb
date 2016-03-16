@@ -1,1 +1,35 @@
 <p>The event show page</p>
+
+<h2><%= @event.name %></h2>
+
+<table>
+<caption><%= @event.name %>: Result</caption>
+  <thead>
+    <tr>
+      <th>Medal</th>
+      <th>Athlete</th>
+      <th>Nation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Gold Medal><img src="/img/gold_medal.png"></td>
+      <td><%= @event.gold_medalist.name %></td>
+      <td><%= @event.gold_medalist.nation.name %><img src="<%= @event.gold_medalist.nation.flag %>"></td>
+    </tr>
+
+    <tr>
+      <td>Silver Medal><img src="/img/silver_medal.png"></td>
+      <td><%= @event.silver_medalist.name %></td>
+      <td><%= @event.silver_medalist.nation.name %><img src="<%= @event.silver_medalist.nation.flag %>"></td>
+    </tr>
+
+    <tr>
+      <td>Bronze Medal><img src="/img/bronze_medal.png"></td>
+      <td><%= @event.bronze_medalist.name %></td>
+      <td><%= @event.bronze_medalist.nation.name %><img src="<%= @event.bronze_medalist.nation.flag %>"></td>
+    </tr>
+
+  </tbody>
+
+</table>
