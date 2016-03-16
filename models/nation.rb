@@ -39,6 +39,11 @@ class Nation
     Nation.new( result[0] )
   end
 
+  def athletes
+    sql = "SELECT * FROM athletes WHERE nation_id = #{@id}"
+    athletes = SqlDB.run( sql )
+    return athletes.map {|athlete| Athlete.new( athlete ) }
+  end
 
 
 

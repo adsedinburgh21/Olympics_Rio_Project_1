@@ -1,1 +1,5 @@
-<p>The nation show page</p>
+<% @nation.athletes.each do |athlete| %>
+
+<h2><a href="/athletes/<%= athlete.id %> "><%= athlete.name %></a></h2>
+
+<% end %>
