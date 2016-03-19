@@ -20,6 +20,10 @@ class Athlete
     return athletes.map {|athlete| Athlete.new(athlete)}
   end
 
+  def self.alphabetical
+    self.all.sort_by! { |athlete| athlete.name}
+  end
+
   def self.create( options )
     sql = "INSERT INTO athletes (
       name, nation_id, event_id) 
@@ -41,6 +45,19 @@ class Athlete
     Athlete.new( result[0] )
   end
 
+  def self.all_from_nation( id_of_nation )
+    sql = "SELECT * FROM athletes WHERE nation_id = #{id_of_nation}"
+    athletes = SqlDB.run( sql )
+    result = athletes.map { |athlete| Athlete.new(athlete) }
+    return result.sort_by! {|athlete| athlete.name}
+  end
+
+  def self.search( search )
+    sql = "SELECT * FROM athletes WHERE name LIKE '%#{search}%'"
+    athletes = SqlDB.run( sql )
+    athletes.map { |athlete| Athlete.new( athlete ) }
+  end
+
   def nation
     sql = "SELECT * FROM nations WHERE id = #{@nation_id}"
     nation = SqlDB.run( sql )
@@ -53,10 +70,20 @@ class Athlete
     return Event.new( event[0] )
   end
 
-  def compete_in?( event_id )
-    return true if event.id == event_id 
-  end
-  ##### Do i need this? Not yet- mbe later.
+
+
+
+# def order_nations_by_points
+#   points = { }
+#   @nations.each do |nation|
+#     points[nation] = total_points( nation.id )
+#   end
+#   ordered = points.sort_by { |nation, points| points }.reverse
+#     @array = []
+#   ordered.map {|new_nation| @array.push(new_nation[0]) }
+#   return @array
+# end
+
 
 
 end

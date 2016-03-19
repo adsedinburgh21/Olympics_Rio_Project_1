@@ -1,7 +1,26 @@
 <div class="content">
   <h1>Athletes</h1>
+  <h3>Total Athletes: <%= @athletes.length %></h3>
 
-  <% @athletes.each do |athlete| %>
+
+<form action="/athletes" method="get">
+  <input type="text" name="search">
+  <button>Search</button>
+</form>
+
+
+<form action="/athletes" method="get">
+  <label>Filter by Nation:</label>
+  <select type="text" name="nation_id">
+    <% @nations.sort_by! {|nation| nation.name}.each do |nation| %>
+      <option value="<%= nation.id %>"><%=nation.name %></option>
+    <% end %>
+  </select>
+  <input type="submit" value="Filter">  
+</form>
+
+
+  <% @athletes.sort_by!{|athlete| athlete.name}.each do |athlete| %>
 
   <h3><img class="nation" src="<%= athlete.nation.flag %>"> <%= athlete.name %></h3>
 

@@ -31,8 +31,11 @@ class Olympic
     return points
   end
 
+
+
+
   # def athlete_total_gold( athlete_id )
-  #   golds = @events.select { |event| event.win_gold?(athlete_id) }
+  #   golds = @events.select { |event| event.athlete_win_gold?(athlete_id) }
   #   return golds.length
   # end
 
@@ -49,10 +52,10 @@ class Olympic
   # end
 
   def order_nations_by_points
-    points = @nations.map do |nation|
+    hash_nations = @nations.map do |nation|
       {id: nation.id, name: nation.name, points: total_points(nation.id), flag: nation.flag}
     end
-    ordered = points.sort_by { |nation| nation[:points] }
+    ordered = hash_nations.sort_by { |nation| nation[:points] }
     return ordered.reverse
   end
 

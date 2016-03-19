@@ -1,13 +1,21 @@
 <div class="content">
   <h1>Nations</h1>
+  <h3>Total Nations: <%= @nations.length %></h3>
 
-  <% @nations.each do |nation| %>
+  <form action="/nations" method="get">
+    <input type="text" name="search">
+    <button>Search</button>
+  </form>
+
+
+
+  <% @nations.sort_by!{|nation| nation.name}.each do |nation| %>
 
   <body>
 
-      <h4><img class="nation" src="<%= nation.flag %>"> <%= nation.name %></h4>
+      <h4><a href="/nations/<%= nation.id %>"><img class="nation" src="<%= nation.flag %>"></a></h4>
 
-      <a href="/nations/<%= nation.id %>"><%= nation.name %>: View More Info</a>
+      <h4><a href="/nations/<%= nation.id %>"><%= nation.name %></a></h4>
     
   </body>
   <hr>

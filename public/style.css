@@ -18,6 +18,10 @@ a:visited {
   max-height: 50px;
 }
 
+.medals {
+  max-height: 100px;
+}
+
 .content {
   width: 70%;
   display: block;

@@ -18,6 +18,10 @@ class Nation
     return nations.map {|nation| Nation.new(nation)}
   end
 
+  def self.alphabetical
+    self.all.sort_by! { |nation| nation.name}
+  end
+
   def self.create( options )
     sql = "INSERT INTO nations (
       name,
@@ -37,6 +41,12 @@ class Nation
     sql = "SELECT * FROM nations WHERE id = #{id}"
     result = SqlDB.run( sql )
     Nation.new( result[0] )
+  end
+
+  def self.search( search )
+    sql = "SELECT * FROM nations WHERE name LIKE '%#{search}%'"
+    nations = SqlDB.run( sql )
+    return nations.map { |nation| Nation.new(nation) }
   end
 
   def athletes

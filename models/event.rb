@@ -22,6 +22,10 @@ class Event
     return events.map {|event| Event.new(event)}
   end
 
+  def self.alphabetical
+    self.all.sort_by! { |event| event.name}
+  end
+
   def self.create( options )
     sql = "INSERT INTO events (
       name,
@@ -47,6 +51,11 @@ class Event
     Event.new( result[0] )
   end
 
+  def self.search( search )
+    sql = "SELECT * FROM events WHERE name LIKE '%#{search}%'"
+    events = SqlDB.run( sql )
+    return events.map {|event| Event.new(event)}
+  end
 
   def gold_medalist
     sql = "SELECT * FROM athletes WHERE id = #{@gold_athlete_id}"
@@ -66,13 +75,6 @@ class Event
     return Athlete.new( bronze[0] )
   end
 
-  # def medalist( medal_id )
-  #   sql = "SELECT * FROM athletes WHERE id = #{medal_id}"
-  #   bronze = SqlDB.run( sql )
-  #   Athlete.new( bronze[0] )
-  # end
-  # # #### This is me trying to refactor the gold/silver/bronze_medalist - worry about that later.
-
   def win_gold?( nation_id )
     return true if nation_id == gold_medalist.nation.id
   end
@@ -86,21 +88,23 @@ class Event
   end
 
 
-  def gold_nation
-    athlete = gold_medalist
-    return athlete.nation.name
-  end
 
 
 
 
 
 #### Could use 'athlete_win_gold?' below in same way as the versions above where pass nation_id, so then could find out if athlete won gold, then in olympic could make method to count number of golds for an athlete. (although at the moment it can only be 1 because of one to many relationship between athlete and event - athlete can only be in 1 event)
-  def athlete_win_gold?( athlete )
-    if athlete.id == gold_medalist.id
-      return true
-    end
-  end
+
+  # def athlete_win_gold?( athlete_id )
+  #   if athlete_id == gold_medalist.id
+  #     return true
+  #   end
+  # end
+
+
+
+
+
   #### Instead of returning true can I return @name which will be the name of the event the athlete has won gold in. then in olympic.rb could do event.select {|event| event.athlete_win_gold} and I would have an array of all the events that athlete won. can do same for silver and bronze then will have a record of all medals won by individual athlete.
 
 
@@ -128,18 +132,15 @@ class Event
 
 
   # def nation_gold( athlete )
-  #   if win_gold?(athlete) == true
-  #     athlete.nation 
+  #   return athlete.nation if win_gold?(athlete) 
   # end
   
-  # def nation_silver( athlete )
-  #   if win_silver?(athlete) == true
-  #     athlete.nation 
+  # def nation_silver( athlete ) 
+  #   return athlete.nation if win_silver?(athlete)
   # end
 
   # def nation_bronze( athlete )
-  #   if win_bronze?(athlete) == true
-  #     athlete.nation 
+  #   return athlete.nation if win_bronze?(athlete)
   # end
 
 

@@ -4,7 +4,11 @@ require_relative( '../models/nation.rb' )
 require_relative( '../models/athlete.rb' )
 
 get '/nations' do
-  @nations = Nation.all
+  if params['search']
+    @nations = Nation.search( params['search'] )
+  else
+    @nations = Nation.alphabetical
+  end
   erb( :"nations/index")
 end
 

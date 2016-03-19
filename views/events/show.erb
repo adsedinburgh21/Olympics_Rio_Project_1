@@ -11,21 +11,21 @@
   </thead>
   <tbody>
     <tr>
-      <td><img class="nation" src="/img/gold_medal.png"></td>
+      <td><img class="medals" src="/img/gold_medal.png"></td>
       <td>Gold Medal</td>
       <td><a href="/athletes/<%= @event.gold_medalist.id %>"><%= @event.gold_medalist.name %></a></td>
       <td><a href="/nations/<%= @event.gold_medalist.nation.id %>"><img class="nation" src="<%= @event.gold_medalist.nation.flag %>"><br><%= @event.gold_medalist.nation.name %></a></td>
     </tr>
 
     <tr>
-      <td><img class="nation" src="/img/silver_medal.png"></td>
+      <td><img class="medals" src="/img/silver_medal.png"></td>
       <td>Silver Medal</td>
       <td><a href="/athletes/<%= @event.silver_medalist.id %>"><%= @event.silver_medalist.name %></a></td>
       <td><a href="/nations/<%= @event.silver_medalist.nation.id %>"><img class="nation" src="<%= @event.silver_medalist.nation.flag %>"><br><%= @event.silver_medalist.nation.name %></a></td>
     </tr>
 
     <tr>
-      <td><img class="nation" src="/img/bronze_medal.png"></td>
+      <td><img class="medals" src="/img/bronze_medal.png"></td>
       <td>Bronze Medal</td>
       <td><a href="/athletes/<%= @event.bronze_medalist.id %>"><%= @event.bronze_medalist.name %></a></td>
       <td><a href="/nations/<%= @event.bronze_medalist.nation.id %>"><img class="nation" src="<%= @event.bronze_medalist.nation.flag %>"><br><%= @event.bronze_medalist.nation.name %></a></td>
