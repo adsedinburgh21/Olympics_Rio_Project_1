@@ -2,7 +2,7 @@ require( 'pg' )
 
 class SqlDB
 
-  def self.run( sql )
+  def self.run(sql)
     begin
       db = PG.connect( { dbname: 'rio', host: 'localhost' } )
       result = db.exec( sql )

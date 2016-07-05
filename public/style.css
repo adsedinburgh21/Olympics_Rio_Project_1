@@ -72,3 +72,7 @@ nav a {
 nav a:visited{
   color: white;
 }
+
+#logo {
+  height: 65%;
+}
